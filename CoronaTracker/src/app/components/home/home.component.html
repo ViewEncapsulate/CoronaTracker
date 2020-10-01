@@ -1,0 +1,50 @@
+<div class="ui inverted dimmer" [class.active]='loading'>
+  <div class="ui text loader">Loading</div>
+</div>
+
+<div class="jumbotron bg-black text-center">
+  <h1 class="display-3">World Statistics</h1>
+  <hr>
+  <app-dashboard-card [totalConfirmed]="totalConfirmed" [totalRecovered]="totalRecovered"
+  [totalActive]="totalActive" [totalDeaths]="totalDeaths"></app-dashboard-card>
+</div>
+<hr>
+<div class="ui form">
+  <div class="inline fields">
+    <label for="fruit">Select Case Type:</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" value='c'  #c id='c' name="caseType" (click)="updateChart('c')" checked="" tabindex="0" class="hidden">
+        <label for="c">Confirmed</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" value='d'  #d id='d' name="caseType" (click)="updateChart('d')" tabindex="0" class="hidden">
+        <label for="d">Deaths</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" value='a'  #a id='a' name="caseType" (click)="updateChart('a')" tabindex="0" class="hidden">
+        <label for="a">Active</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" value='r'  #r id='r' name="caseType" (click)="updateChart('r')" tabindex="0" class="hidden">
+        <label for="r">Recovered</label>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col">
+    <google-chart [type]='chart.PieChart' [options]='chart.options' style="width: 100%;" [height]='chart.height' [data]='datatable'></google-chart>
+  </div>
+  <div class="col">
+    <google-chart [type]='chart.ColumnChart' style="width: 100%;" [options]='chart.options' [height]='chart.height' [data]='datatable'></google-chart>
+  </div>
+</div>
+
